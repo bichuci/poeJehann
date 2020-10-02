@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <title>JQuery</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <script src="./js/jquery-3.5.1.js" ></script>
+    <script>
+        jQuery(function($){
+            $("#getPropValue").on("click", function(){
+                $("#resPropValue").html(
+                    $("#getPropValue").css("color")
+                );
+            });
+
+            $("#setPropValue").on("click", function(){
+                $("#setPropValue").css("color", "black");
+            });
+
+            $("#offClick").click(function(){
+                console.log("off click p");
+                $("#getPropValue").off("click");
+                $("#setPropValue").off("click");
+            });
+            let cptMulti = 0;
+            let colorMulti = "black";
+            let fontWeightMulti = "normal";
+            $("#setMultiPropValue").click( () => {
+                //cptMulti
+                switch(cptMulti){
+                    case 0:
+                        console.log(`case 0, cptMulti : ${cptMulti}`);
+                        colorMulti = "red";
+                        fontWeightMulti = "bold";
+                        cptMulti++;
+                        break;
+                    case 1:
+                        console.log(`case 1, cptMulti : ${cptMulti}`);
+                        colorMulti = "green";
+                        fontWeightMulti = "bolder";
+                        cptMulti++;
+                        break;
+                    default:
+                        console.log(`case default, cptMulti : ${cptMulti}`);
+                        colorMulti = "black";
+                        fontWeightMulti = "normal";
+                        cptMulti=0;
+                }
+                $("#resMultiPropValue").css({
+                    color:colorMulti,
+                    fontWeight:fontWeightMulti
+                });
+            });
+
+            $("#animation01").click(() => {
+                $("#blocAnimate01").animate({
+                    //les attributs css a changer
+                    width:"250px",
+                    fontSize: ["2em", "linear", "fast"]
+                },
+                //durée de l'animation
+                "slow",
+                /*fonction facultative 
+                a déclencher à la fin de 
+                l'animation*/
+                () =>{
+                    console.log("animation01");
+                } );
+
+                $("#blocAnimate02").animate({
+                    width:"250px",
+                    fontSize: "2em"
+                },
+                "slow", "linear",
+                () =>{
+                    console.log("animation02");
+                } );
+            });
+
+            $("#animation01Reset").click(() => {
+                $("#blocAnimate01").animate({
+                    //les attributs css a changer
+                    width:"50px",
+                    fontSize: ["1em", "linear", "fast"]
+                },
+                //durée de l'animation
+                "slow",
+                /*fonction facultative 
+                a déclencher à la fin de 
+                l'animation*/
+                () =>{
+                    console.log("animation01");
+                } );
+
+                $("#blocAnimate02").animate({
+                    width:"50px",
+                    fontSize: "1em"
+                },
+                "slow", "linear",
+                () =>{
+                    console.log("animation02");
+                } );
+            });
+
+            $("#css01Reset").click( () => {
+                $("#blocAnimate01").css({
+                    width:"50px",
+                    fontSize: "1em",
+                    backgroundColor:"yellow"
+                });
+                $("#blocAnimate02").css({
+                    width:"50px",
+                    fontSize: "1em"
+                });
+            });
+
+            $("#show01").click( ()=>{
+                $("#threeStates01").animate({
+                    width: "show"
+                });
+            });
+
+            $("#hide01").click( ()=>{
+                $("#threeStates01").animate({
+                    width: "hide"
+                });
+            });
+
+            $("#toggle01").click( ()=>{
+                $("#toggle01").animate({
+                    width: "toggle"
+                }, "fast", "linear");
+            });
+
+            $("#show02").click( ()=>{
+                $("#threeStates02").show(
+                    "slow", 
+                    "linear",
+                    () => {
+                        console.log("div affichée");
+                    }
+                );
+            });
+
+            $("#hide02").click( ()=>{
+                $("#threeStates02").hide(
+                    "slow", 
+                    "linear",
+                    () => {
+                        console.log("div au bal masqué");
+                    }
+                );
+            });
+
+            $("#toggle02").click( ()=>{
+                $("#threeStates02").toggle(
+                    "slow", 
+                    "linear",
+                    () => {
+                        console.log("div variable");
+                    }
+                );
+            });
+
+            
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <h1>JQuery</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="./rappelsJs.html">Rappels JS</a></li>
+            <li><a href="./index.html">JQuery</a></li>
+            <li><a href="./JQueryCss.html">JQuery & HTML</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section>
+            <article>
+                <h1>.css()</h1>
+                <p>
+                    La méthode .css() peut permettre :
+                </p>
+                <ul>
+                    <li>de changer ou d'ajouter des 
+                        propriétés css à un élément
+                    </li>
+                    <li>
+                        de récupérer la valeur des 
+                        propriétés css d'un élément
+                    </li>
+                </ul>
+            </article>
+            <article>
+                <h1>Récupérer une valeur de propriété</h1>
+                <p id="getPropValue" style="color: darkblue;
+                font-weight: bold;">
+                    Cliquez ici pour voir le css appliqué.
+                </p>
+                <p id="resPropValue">
+
+                </p>
+                <button id="offClick">Off click</button>
+            </article>
+            <article>
+                <h1>Modifier une valeur de propriété</h1>
+                <p id="setPropValue" style="color: darkblue;
+                font-weight: bold;">
+                    Cliquez ici pour changer la couleur.
+                </p>
+            </article>
+            <article>
+                <H1>Changer plusieurs valeurs 
+                    de plusieurs propriétés d'un élément
+                </H1>
+                <p id="setMultiPropValue">
+                    Changer la couleur et le poids des 
+                    caractères du paragraphe suivant
+                </p>
+                <p id="resMultiPropValue">
+                    Lorem ipsum dolor sit amet consectetur 
+                    adipisicing elit. Quibusdam laborum vitae, 
+                    officiis fugiat ipsa incidunt officia facere 
+                    delectus animi. Omnis earum laborum quidem 
+                    quod odio blanditiis velit laboriosam, 
+                    animi suscipit.
+                </p>
+            </article>
+        </section>
+        <h2>Animer des éléments</h2>
+        <section>
+            <article>
+                <h1>animate()</h1>
+                <p>
+                    Animate change les propriété css 
+                    en ajoutant de l'animation. 
+                    Elle reçoit comme paramètres les 
+                    propriétés qui changent (sous forme 
+                    d'objets)
+                </p>
+                <p>
+                    Il y a des paramètres facultatif
+                </p>
+                <p>
+                    la durée :
+                </p>
+                <ul>
+                    <li>"slow" (600 ms)</li>
+                    <li>"normal" (par défaut, 400 ms)</li>
+                    <li>"fast" (200 ms)</li>
+                    <li>Une durée en ms</li>
+                </ul>
+                <p>
+                    un type d'animation :
+                </p>
+                <ul>
+                    <li>swing (par défaut) de plus en 
+                        plus vite puis ralenti
+                    </li>
+                    <li>
+                        linear : vitesse constante
+                    </li>
+                </ul>
+                <p>
+                    et une fonction qui s'éxécutera à la 
+                    fin de l'animation (callbackfn)
+                </p>
+                <button id="animation01">
+                    Animate this
+                </button>
+                <div id="blocAnimate01" class="blocAnimate">
+                    swing
+                </div>
+                <div id="blocAnimate02" class="blocAnimate">
+                    linear                    
+                </div>
+                <button id="animation01Reset">
+                    Reset animation 
+                </button>
+                <button id="css01Reset">
+                    Reset css 
+                </button>
+            </article>
+            <article>
+                <h1>États additionnels</h1>
+                <p>
+                    Dans les paramètres de "animate()", il est 
+                    possible de définir des états aux propriétés 
+                    css autres que du CSS
+                </p>
+                <ul>
+                    <li>show</li>
+                    <li>hide</li>
+                    <li>toggle</li>
+                </ul>
+                <button id="show01">show</button>
+                <button id="hide01">hide</button>
+                <button id="toggle01">toggle</button>
+                <div id="threeStates01" class="threeStates"></div>
+                <p>
+                    Ces états additionnels existent aussi en 
+                    fonctions directement applicables, ce qui 
+                    évite d'avoir à appeler animate
+                </p>
+                <ul>
+                    <li>hide()</li>
+                    <li>show()</li>
+                    <li>toggle()</li>
+                </ul>
+                <button id="show02">show</button>
+                <button id="hide02">hide</button>
+                <button id="toggle02">toggle</button>
+                <div id="threeStates02" class="threeStates"></div>
+            </article>
+        </section>
+    </main>
+</body>
+</html>

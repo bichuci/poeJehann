@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css"/>
+    <script src="./js/jquery-3.5.1.js" ></script>
+    <script src="./js/bootstrap.min.js" ></script>
+    <script src="./js/poppers.min.js" ></script>
+    <!-- C'est à partir d'ici qu'on va mettre le CSS et le JS perso -->
+    <link rel="stylesheet" href="./css/customCss.css"/>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="http://www.dawan.fr">Dawan</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="./index.html">Intro <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./rappelsJs.html">Rappels JS</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="./JQueryCss.html">Jquery & HTML</a>
+              </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Bootstrap
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item active" href="./bootstrap.html">Bootstrap - intro</a>
+                <a class="dropdown-item" href="./composants.html">Bootstrap - composants</a>
+              </div>
+            </li>
+          </ul>
+          <!--
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+            -->
+        </div>
+      </nav>
+    <header class="alert bg-light">
+        <h1>Boostrap</h1>
+    </header>
+    <main class="container">
+        <h2>Bootstrap : un système de grille</h2>
+        <section class="row">
+            <article class="col-lg-3">
+                <h1>Une grille</h1>
+                <p class="text-justify">
+                    Bootstrap est un "grid system", c'est à dire que l'on peut disposer les blocs dans 
+                    des lignes composées de 12 colonnes.
+                    Selon la "largeur" donnée à ces colonne et leur type (small, medium, large, etc.), 
+                    leurs réactions en RWD (Responsive Web Design => design Web Adaptatif ) seront différentes 
+                    selon les jalons imposés par les media queries.
+                </p>
+            </article>
+            <article class="col-lg-3">
+                <h1>12 colonnes</h1>
+                <p class="text-justify">
+                    La largeur d'un bloc est donc défini par le nombre de colonnes.
+                    Cet article et le précédent bénéficient d'une largeur de trois colonnes
+                </p>
+            </article>
+            <article class="col-lg-6">
+                <h1>Jalon adaptatif</h1>
+                <p class="text-justify">
+                    Les blocs respectent donc les largeurs définies dnas les media queries. Selon le jalon 
+                    défini dans le container, les blocs "occuperont" toute la largeur de l'écran selon 
+                    leur catégorie (sm, md, lg, etc.)
+                </p>
+                <div class="row">
+                    <p class="col-md-6 text-justify">
+                        Il est aussi possible de créer des lignes dans des colonnes.
+                        On dispose ainsi de 12 nouvelles colonnes au sein de cette ligne.
+                    </p>
+                    <p class="col-md-6 text-justify">
+                        Mais il ne faut pas abuser de l'encapsulation des lignes et des colonnes.
+                        On risque de s'y perdre et de perdre en lisibilité.
+                    </p>
+                </div>
+            </article>
+        </section>
+        <h2>Bootstrap, adaptatif pré-formaté</h2>
+        <section>
+          <article class="col-lg-6">
+            
+          </article>
+        </section>
+    </main>
+    <footer>
+        footer
+    </footer>
+</body>
+</html>
